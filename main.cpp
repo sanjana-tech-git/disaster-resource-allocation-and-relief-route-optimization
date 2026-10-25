@@ -2,6 +2,7 @@
 #include "include/Resource.h"
 #include <iostream>
 #include "include/Area.h"
+#include "include/Request.h"
 
 using namespace std;
 
@@ -14,6 +15,8 @@ int main() {
         cout << "2. Display affected areas\n";
         cout << "3. Add resource\n";
         cout << "4. Display resources\n";
+        cout << "5. Add resource request\n";
+        cout << "6. Display resource requests\n";
         cout << "0. Exit\n";
         cout << "Enter choice: ";
 
@@ -34,7 +37,13 @@ int main() {
             case 4:
                 displayResources();
                 break;
+            case 5:
+                addRequest();
+                break;
 
+            case 6:
+                displayRequests();
+                break;
             case 0:
                 cout << "Exiting program...\n";
                 break;
