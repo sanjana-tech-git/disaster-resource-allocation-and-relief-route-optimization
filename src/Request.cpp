@@ -87,3 +87,77 @@ void displayRequests() {
         current = current->next;
     }
 }
+
+int getRequestCount() {
+    int count = 0;
+    Request* current = head;
+
+    while (current != nullptr) {
+        count++;
+        current = current->next;
+    }
+
+    return count;
+}
+
+int getRequestId(int index) {
+    Request* current = head;
+
+    for (int i = 0; i < index && current != nullptr; i++) {
+        current = current->next;
+    }
+
+    return current->requestId;
+}
+
+int getRequestAreaId(int index) {
+    Request* current = head;
+
+    for (int i = 0; i < index && current != nullptr; i++) {
+        current = current->next;
+    }
+
+    return current->areaId;
+}
+
+int getRequestResourceId(int index) {
+    Request* current = head;
+
+    for (int i = 0; i < index && current != nullptr; i++) {
+        current = current->next;
+    }
+
+    return current->resourceId;
+}
+
+int getRequestQuantity(int index) {
+    Request* current = head;
+
+    for (int i = 0; i < index && current != nullptr; i++) {
+        current = current->next;
+    }
+
+    return current->quantity;
+}
+
+int getRequestPriority(int index) {
+    Request* current = head;
+
+    for (int i = 0; i < index && current != nullptr; i++) {
+        current = current->next;
+    }
+
+    return current->priority;
+}
+
+void updateRequestQuantity(int index, int quantity) {
+    Request* current = head;
+
+    for (int i = 0; i < index && current != nullptr; i++) {
+        current = current->next;
+    }
+
+    if (current != nullptr) {
+        current->quantity = quantity;
+    }
+}
