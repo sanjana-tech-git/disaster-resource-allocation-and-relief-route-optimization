@@ -1,4 +1,5 @@
 
+#include "include/Resource.h"
 #include <iostream>
 #include "include/Area.h"
 
@@ -11,6 +12,8 @@ int main() {
         cout << "\n===== DISASTER MANAGEMENT SYSTEM =====\n";
         cout << "1. Register affected area\n";
         cout << "2. Display affected areas\n";
+        cout << "3. Add resource\n";
+        cout << "4. Display resources\n";
         cout << "0. Exit\n";
         cout << "Enter choice: ";
 
@@ -23,6 +26,13 @@ int main() {
 
             case 2:
                 displayAreas();
+                break;
+            case 3:
+                addResource();
+                break;
+
+            case 4:
+                displayResources();
                 break;
 
             case 0:
