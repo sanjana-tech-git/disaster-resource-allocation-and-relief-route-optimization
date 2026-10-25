@@ -9,6 +9,7 @@ struct Area {
     int severity;
 };
 
+// These functions manage affected areas.
 void addArea();
 void displayAreas();
 
