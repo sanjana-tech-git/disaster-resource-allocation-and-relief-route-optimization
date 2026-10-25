@@ -3,6 +3,7 @@
 #include <iostream>
 #include "include/Area.h"
 #include "include/Request.h"
+#include "include/PriorityQueue.h"
 
 using namespace std;
 
@@ -17,6 +18,9 @@ int main() {
         cout << "4. Display resources\n";
         cout << "5. Add resource request\n";
         cout << "6. Display resource requests\n";
+        cout << "7. Add priority request\n";
+        cout << "8. Display priority queue\n";
+        cout << "9. Process next request\n";
         cout << "0. Exit\n";
         cout << "Enter choice: ";
 
@@ -43,6 +47,17 @@ int main() {
 
             case 6:
                 displayRequests();
+                break;
+            case 7:
+                addPriorityRequest();
+                break;
+
+            case 8:
+                displayPriorityQueue();
+                break;
+
+            case 9:
+                processNextRequest();
                 break;
             case 0:
                 cout << "Exiting program...\n";
