@@ -14,4 +14,15 @@ struct Request {
 void addRequest();
 void displayRequests();
 
+int getRequestCount();
+int getRequestId(int index);
+int getRequestAreaId(int index);
+int getRequestResourceId(int index);
+int getRequestQuantity(int index);
+int getRequestPriority(int index);
+
+void updateRequestQuantity(int index, int quantity);
+void saveRequests();
+void loadRequests();
+
 #endif

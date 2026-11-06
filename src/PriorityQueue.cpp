@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include "../include/PriorityQueue.h"
 
@@ -6,7 +7,9 @@ using namespace std;
 PriorityRequest requests[100];
 int requestCount = 0;
 
+// Add request
 void addPriorityRequest() {
+
     if (requestCount == 100) {
         cout << "Priority queue is full.\n";
         return;
@@ -35,6 +38,7 @@ void addPriorityRequest() {
         request.quantity <= 0 ||
         request.priority < 1 ||
         request.priority > 3) {
+
         cout << "Invalid request details.\n";
         return;
     }
@@ -45,25 +49,51 @@ void addPriorityRequest() {
     cout << "Request added to priority queue.\n";
 }
 
+// Display requests according to priority
 void displayPriorityQueue() {
+
     if (requestCount == 0) {
         cout << "\nPriority queue is empty.\n";
         return;
     }
 
+    PriorityRequest temp[100];
+
+    // Copy original queue
+    for (int i = 0; i < requestCount; i++) {
+        temp[i] = requests[i];
+    }
+
+    // Bubble sort according to priority
+    for (int i = 0; i < requestCount - 1; i++) {
+
+        for (int j = 0; j < requestCount - i - 1; j++) {
+
+            if (temp[j].priority > temp[j + 1].priority) {
+
+                PriorityRequest t = temp[j];
+                temp[j] = temp[j + 1];
+                temp[j + 1] = t;
+            }
+        }
+    }
+
     cout << "\n===== PRIORITY QUEUE =====\n";
 
     for (int i = 0; i < requestCount; i++) {
-        cout << "\nRequest ID: " << requests[i].requestId;
-        cout << "\nArea ID: " << requests[i].areaId;
-        cout << "\nResource ID: " << requests[i].resourceId;
-        cout << "\nQuantity: " << requests[i].quantity;
-        cout << "\nPriority: " << requests[i].priority;
+
+        cout << "\nRequest ID: " << temp[i].requestId;
+        cout << "\nArea ID: " << temp[i].areaId;
+        cout << "\nResource ID: " << temp[i].resourceId;
+        cout << "\nQuantity: " << temp[i].quantity;
+        cout << "\nPriority: " << temp[i].priority;
         cout << "\n----------------------\n";
     }
 }
 
+// Process highest priority request
 void processNextRequest() {
+
     if (requestCount == 0) {
         cout << "\nNo requests to process.\n";
         return;
@@ -72,6 +102,7 @@ void processNextRequest() {
     int highestIndex = 0;
 
     for (int i = 1; i < requestCount; i++) {
+
         if (requests[i].priority < requests[highestIndex].priority) {
             highestIndex = i;
         }
@@ -83,6 +114,7 @@ void processNextRequest() {
     cout << "\nPriority: "
          << requests[highestIndex].priority << "\n";
 
+    // Remove processed request
     for (int i = highestIndex; i < requestCount - 1; i++) {
         requests[i] = requests[i + 1];
     }

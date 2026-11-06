@@ -1,6 +1,8 @@
 
 #include <iostream>
+#include <fstream>
 #include "../include/Area.h"
+#include "../include/BST.h"
 
 using namespace std;
 
@@ -8,6 +10,50 @@ using namespace std;
 Area areas[100];
 int totalAreas = 0;
 
+// Save areas in file
+void saveAreas() {
+    ofstream file("data/areas.txt");
+
+    if (!file) {
+        cout << "Error saving area data!\n";
+        return;
+    }
+
+    for (int i = 0; i < totalAreas; i++) {
+        file << areas[i].id << " "
+             << areas[i].name << " "
+             << areas[i].population << " "
+             << areas[i].severity << endl;
+    }
+
+    file.close();
+}
+
+// Load areas from file
+void loadAreas() {
+    ifstream file("data/areas.txt");
+
+    if (!file) {
+        return;
+    }
+
+    totalAreas = 0;
+
+    while (totalAreas < 100 &&
+       file >> areas[totalAreas].id
+            >> areas[totalAreas].name
+            >> areas[totalAreas].population
+            >> areas[totalAreas].severity) {
+
+    insertArea(areas[totalAreas].id);
+
+    totalAreas++;
+}
+
+    file.close();
+}
+
+// Add new area
 void addArea() {
     if (totalAreas == 100) {
         cout << "Area limit reached!\n";
@@ -30,18 +76,22 @@ void addArea() {
     cout << "Enter choice: ";
     cin >> areas[totalAreas].severity;
 
-    if (areas[totalAreas].population < 0 ||
+    if (areas[totalAreas].population <= 0 ||
         areas[totalAreas].severity < 1 ||
         areas[totalAreas].severity > 3) {
+
         cout << "Invalid details. Area not added.\n";
         return;
     }
-
+    insertArea(areas[totalAreas].id);
     totalAreas++;
+
+    saveAreas();
 
     cout << "Area registered successfully!\n";
 }
 
+// Display areas
 void displayAreas() {
     if (totalAreas == 0) {
         cout << "\nNo areas registered yet.\n";
@@ -67,4 +117,14 @@ void displayAreas() {
 
         cout << "\n--------------------------\n";
     }
+}
+
+int getAreaCount()
+{
+    return totalAreas;
+}
+
+Area getArea(int index)
+{
+    return areas[index];
 }

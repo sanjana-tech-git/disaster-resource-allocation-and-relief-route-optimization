@@ -1,0 +1,7 @@
+101 foodkits 250
+102 water 500
+103 medicalkits 60
+104 blankets 250
+105 rescuekits 60
+111 medicine 50
+106 medicines 150

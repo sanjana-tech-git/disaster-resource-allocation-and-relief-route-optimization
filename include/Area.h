@@ -9,8 +9,13 @@ struct Area {
     int severity;
 };
 
-// These functions manage affected areas.
 void addArea();
 void displayAreas();
+
+void saveAreas();
+void loadAreas();
+
+int getAreaCount();
+Area getArea(int index);
 
 #endif

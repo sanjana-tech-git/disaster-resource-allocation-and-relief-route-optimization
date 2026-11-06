@@ -1,11 +1,87 @@
 
 #include <iostream>
+#include <fstream>
 #include "../include/Request.h"
 
 using namespace std;
 
 Request* head = nullptr;
 int nextRequestId = 1;
+
+// Save all linked-list requests into a file.
+void saveRequests() {
+    ofstream file("data/requests.txt");
+
+    if (!file) {
+        cout << "Error saving request data!\n";
+        return;
+    }
+
+    Request* current = head;
+
+    while (current != nullptr) {
+        file << current->requestId << " "
+             << current->areaId << " "
+             << current->resourceId << " "
+             << current->quantity << " "
+             << current->priority << endl;
+
+        current = current->next;
+    }
+
+    file.close();
+}
+
+// Load requests from the file into the linked list.
+void loadRequests() {
+    ifstream file("data/requests.txt");
+
+    if (!file) {
+        return;
+    }
+
+    int requestId, areaId, resourceId, quantity, priority;
+    int maxId = 0;
+
+    while (file >> requestId >> areaId >> resourceId
+                >> quantity >> priority) {
+
+        if (requestId <= 0 || areaId <= 0 ||
+            resourceId <= 0 || quantity < 0 ||
+            priority < 1 || priority > 3) {
+            continue;
+        }
+
+        Request* newRequest = new Request;
+
+        newRequest->requestId = requestId;
+        newRequest->areaId = areaId;
+        newRequest->resourceId = resourceId;
+        newRequest->quantity = quantity;
+        newRequest->priority = priority;
+        newRequest->next = nullptr;
+
+        if (head == nullptr) {
+            head = newRequest;
+        } else {
+            Request* current = head;
+
+            while (current->next != nullptr) {
+                current = current->next;
+            }
+
+            current->next = newRequest;
+        }
+
+        if (requestId > maxId) {
+            maxId = requestId;
+        }
+    }
+
+    nextRequestId = maxId + 1;
+
+    file.close();
+}
 
 void addRequest() {
     Request* newRequest = new Request;
@@ -36,6 +112,7 @@ void addRequest() {
 
         cout << "Invalid request details.\n";
         delete newRequest;
+        nextRequestId--;
         return;
     }
 
@@ -52,6 +129,8 @@ void addRequest() {
 
         current->next = newRequest;
     }
+
+    saveRequests();
 
     cout << "Request added successfully!\n";
 }
@@ -159,5 +238,6 @@ void updateRequestQuantity(int index, int quantity) {
 
     if (current != nullptr) {
         current->quantity = quantity;
+        saveRequests();
     }
 }

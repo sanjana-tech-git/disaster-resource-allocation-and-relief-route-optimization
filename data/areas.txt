@@ -1,0 +1,6 @@
+1 rampur 1200 3
+2 shantinagar 800 2
+3 shivpur 1500 3
+4 greencolony 600 1
+5 lakhimpur 1000 2
+6 testarea 500 2
