@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include "include/Area.h"
 #include "include/Resource.h"
@@ -16,7 +15,7 @@ using namespace std;
 
 
 // ==========================================
-// 1. AREA MANAGEMENT MENU
+// 1. AFFECTED AREA MANAGEMENT MENU
 // ==========================================
 
 void areaMenu()
@@ -25,14 +24,14 @@ void areaMenu()
 
     do
     {
-        cout << "\n========== AREA MANAGEMENT ==========\n";
-        cout << "1. Register Affected Area\n";
-        cout << "2. Display Affected Areas\n";
-        cout << "3. Search Area using BST\n";
-        cout << "4. BST Traversals\n";
+        cout << "\n========== AFFECTED AREA MANAGEMENT ==========\n";
+        cout << "1. Register a New Affected Area\n";
+        cout << "2. View All Affected Areas\n";
+        cout << "3. Find an Area by ID\n";
+        cout << "4. View Area Records in Different Orders\n";
         cout << "0. Back to Main Menu\n";
 
-        cout << "Enter choice: ";
+        cout << "\nEnter your choice: ";
         cin >> choice;
 
         switch (choice)
@@ -49,11 +48,11 @@ void areaMenu()
             {
                 int id;
 
-                cout << "Enter Area ID to search: ";
+                cout << "\nEnter Area ID to search: ";
                 cin >> id;
 
                 if (searchArea(id))
-                    cout << "\nArea Found in BST!\n";
+                    cout << "\nArea Found!\n";
                 else
                     cout << "\nArea Not Found!\n";
 
@@ -61,10 +60,17 @@ void areaMenu()
             }
 
             case 4:
-                cout << "\n========== BST TRAVERSALS ==========\n";
+                cout << "\n========== AREA RECORDS ==========\n";
+
+                cout << "\n--- Areas in Ascending Order ---\n";
                 inorder();
+
+                cout << "\n--- Areas in Root-First Order ---\n";
                 preorder();
+
+                cout << "\n--- Areas in Child-First Order ---\n";
                 postorder();
+
                 break;
 
             case 0:
@@ -72,7 +78,7 @@ void areaMenu()
                 break;
 
             default:
-                cout << "\nInvalid choice! Try again.\n";
+                cout << "\nInvalid choice! Please try again.\n";
         }
 
     } while (choice != 0);
@@ -90,13 +96,13 @@ void resourceMenu()
     do
     {
         cout << "\n========== RESOURCE MANAGEMENT ==========\n";
-        cout << "1. Add Resource\n";
-        cout << "2. Display Resources\n";
-        cout << "3. Search Resource by ID\n";
-        cout << "4. Display Hash Table\n";
+        cout << "1. Add New Resource\n";
+        cout << "2. View Available Resources\n";
+        cout << "3. Find Resource by ID\n";
+        cout << "4. View Resource Storage Records\n";
         cout << "0. Back to Main Menu\n";
 
-        cout << "Enter choice: ";
+        cout << "\nEnter your choice: ";
         cin >> choice;
 
         switch (choice)
@@ -113,7 +119,7 @@ void resourceMenu()
             {
                 int id;
 
-                cout << "Enter Resource ID to search: ";
+                cout << "\nEnter Resource ID: ";
                 cin >> id;
 
                 int index = searchResource(id);
@@ -142,7 +148,7 @@ void resourceMenu()
                 break;
 
             default:
-                cout << "\nInvalid choice! Try again.\n";
+                cout << "\nInvalid choice! Please try again.\n";
         }
 
     } while (choice != 0);
@@ -150,7 +156,7 @@ void resourceMenu()
 
 
 // ==========================================
-// 3. REQUEST MANAGEMENT MENU
+// 3. RESOURCE REQUEST MANAGEMENT MENU
 // ==========================================
 
 void requestMenu()
@@ -159,15 +165,15 @@ void requestMenu()
 
     do
     {
-        cout << "\n========== REQUEST MANAGEMENT ==========\n";
-        cout << "1. Add Resource Request\n";
-        cout << "2. Display Resource Requests\n";
-        cout << "3. Add Priority Request\n";
-        cout << "4. Display Priority Queue\n";
-        cout << "5. Process Next Request\n";
+        cout << "\n========== RESOURCE REQUEST MANAGEMENT ==========\n";
+        cout << "1. Submit a Resource Request\n";
+        cout << "2. View All Resource Requests\n";
+        cout << "3. Submit an Urgent Request\n";
+        cout << "4. View Requests by Priority\n";
+        cout << "5. Process the Next Request\n";
         cout << "0. Back to Main Menu\n";
 
-        cout << "Enter choice: ";
+        cout << "\nEnter your choice: ";
         cin >> choice;
 
         switch (choice)
@@ -197,7 +203,7 @@ void requestMenu()
                 break;
 
             default:
-                cout << "\nInvalid choice! Try again.\n";
+                cout << "\nInvalid choice! Please try again.\n";
         }
 
     } while (choice != 0);
@@ -205,7 +211,7 @@ void requestMenu()
 
 
 // ==========================================
-// 4. RESOURCE ALLOCATION MENU
+// 4. RESOURCE DISTRIBUTION MENU
 // ==========================================
 
 void allocationMenu()
@@ -214,11 +220,11 @@ void allocationMenu()
 
     do
     {
-        cout << "\n========== RESOURCE ALLOCATION ==========\n";
-        cout << "1. Allocate Resources\n";
+        cout << "\n========== RESOURCE DISTRIBUTION ==========\n";
+        cout << "1. Distribute Resources to Affected Areas\n";
         cout << "0. Back to Main Menu\n";
 
-        cout << "Enter choice: ";
+        cout << "\nEnter your choice: ";
         cin >> choice;
 
         switch (choice)
@@ -232,7 +238,7 @@ void allocationMenu()
                 break;
 
             default:
-                cout << "\nInvalid choice! Try again.\n";
+                cout << "\nInvalid choice! Please try again.\n";
         }
 
     } while (choice != 0);
@@ -240,7 +246,7 @@ void allocationMenu()
 
 
 // ==========================================
-// 5. RELIEF ROUTE OPTIMIZATION MENU
+// 5. RELIEF ROUTE MANAGEMENT MENU
 // ==========================================
 
 void routeMenu()
@@ -249,16 +255,16 @@ void routeMenu()
 
     do
     {
-        cout << "\n========== RELIEF ROUTE OPTIMIZATION ==========\n";
-        cout << "1. Add Road Between Areas\n";
-        cout << "2. Display Road Network\n";
-        cout << "3. BFS Traversal\n";
-        cout << "4. DFS Traversal\n";
-        cout << "5. Find Shortest Relief Route (Dijkstra)\n";
-        cout << "6. Find Minimum Relief Network (Kruskal MST)\n";
+        cout << "\n========== RELIEF ROUTE MANAGEMENT ==========\n";
+        cout << "1. Add a Road Between Areas\n";
+        cout << "2. View Road Network\n";
+        cout << "3. Explore Connected Areas (BFS)\n";
+        cout << "4. Explore Areas Using Depth Search (DFS)\n";
+        cout << "5. Find the Shortest Relief Route (Dijkstra)\n";
+        cout << "6. Find the Minimum Road Network (Kruskal MST)\n";
         cout << "0. Back to Main Menu\n";
 
-        cout << "Enter choice: ";
+        cout << "\nEnter your choice: ";
         cin >> choice;
 
         switch (choice)
@@ -292,7 +298,7 @@ void routeMenu()
                 break;
 
             default:
-                cout << "\nInvalid choice! Try again.\n";
+                cout << "\nInvalid choice! Please try again.\n";
         }
 
     } while (choice != 0);
@@ -300,7 +306,7 @@ void routeMenu()
 
 
 // ==========================================
-// 6. SORTING MENU
+// 6. AREA ORGANIZATION AND SORTING MENU
 // ==========================================
 
 void sortingMenu()
@@ -309,13 +315,13 @@ void sortingMenu()
 
     do
     {
-        cout << "\n========== SORTING OPERATIONS ==========\n";
-        cout << "1. Sort Areas by Severity (Bubble Sort)\n";
-        cout << "2. Sort Areas by Population (Selection Sort)\n";
-        cout << "3. Sort Areas by ID (Insertion Sort)\n";
+        cout << "\n========== ORGANIZE AREA INFORMATION ==========\n";
+        cout << "1. Arrange Areas by Disaster Severity\n";
+        cout << "2. Arrange Areas by Population\n";
+        cout << "3. Arrange Areas by Area ID\n";
         cout << "0. Back to Main Menu\n";
 
-        cout << "Enter choice: ";
+        cout << "\nEnter your choice: ";
         cin >> choice;
 
         switch (choice)
@@ -337,7 +343,7 @@ void sortingMenu()
                 break;
 
             default:
-                cout << "\nInvalid choice! Try again.\n";
+                cout << "\nInvalid choice! Please try again.\n";
         }
 
     } while (choice != 0);
@@ -345,7 +351,7 @@ void sortingMenu()
 
 
 // ==========================================
-// 7. UNION-FIND MENU
+// 7. AREA CONNECTION MANAGEMENT MENU
 // ==========================================
 
 void unionFindMenu()
@@ -354,13 +360,13 @@ void unionFindMenu()
 
     do
     {
-        cout << "\n========== UNION-FIND OPERATIONS ==========\n";
-        cout << "1. Union Two Areas\n";
-        cout << "2. Find Area Group\n";
-        cout << "3. Display Union-Find\n";
+        cout << "\n========== AREA CONNECTION MANAGEMENT ==========\n";
+        cout << "1. Connect Two Affected Areas\n";
+        cout << "2. Find the Connected Group of an Area\n";
+        cout << "3. View Area Connection Groups\n";
         cout << "0. Back to Main Menu\n";
 
-        cout << "Enter choice: ";
+        cout << "\nEnter your choice: ";
         cin >> choice;
 
         switch (choice)
@@ -369,10 +375,10 @@ void unionFindMenu()
             {
                 int a, b;
 
-                cout << "Enter first Area ID: ";
+                cout << "\nEnter First Area ID: ";
                 cin >> a;
 
-                cout << "Enter second Area ID: ";
+                cout << "Enter Second Area ID: ";
                 cin >> b;
 
                 unionSets(a, b);
@@ -383,15 +389,15 @@ void unionFindMenu()
             {
                 int id;
 
-                cout << "Enter Area ID: ";
+                cout << "\nEnter Area ID: ";
                 cin >> id;
 
                 int root = findSet(id);
 
                 if (root == -1)
-                    cout << "Invalid Area ID!\n";
+                    cout << "\nInvalid Area ID!\n";
                 else
-                    cout << "Area " << id
+                    cout << "\nArea " << id
                          << " belongs to group " << root << endl;
 
                 break;
@@ -406,7 +412,7 @@ void unionFindMenu()
                 break;
 
             default:
-                cout << "\nInvalid choice! Try again.\n";
+                cout << "\nInvalid choice! Please try again.\n";
         }
 
     } while (choice != 0);
@@ -437,16 +443,18 @@ int main()
         cout << "   Resource Allocation & Relief Optimization   \n";
         cout << "===============================================\n";
 
-        cout << "\n1. Area Management\n";
-        cout << "2. Resource Management\n";
-        cout << "3. Request Management\n";
-        cout << "4. Resource Allocation\n";
-        cout << "5. Relief Route Optimization\n";
-        cout << "6. Sorting Operations\n";
-        cout << "7. Union-Find Operations\n";
-        cout << "0. Exit\n";
+        cout << "\n";
+        cout << "1. Manage Disaster-Affected Areas\n";
+        cout << "2. Manage Available Resources\n";
+        cout << "3. Manage Resource Requests\n";
+        cout << "4. Distribute Resources to Areas\n";
+        cout << "5. Manage Relief Routes\n";
+        cout << "6. Organize and Sort Area Information\n";
+        cout << "7. Connect and Group Affected Areas\n";
+        cout << "0. Exit System\n";
 
-        cout << "\nEnter your choice: ";
+        cout << "\n===============================================\n";
+        cout << "Enter your choice: ";
         cin >> choice;
 
         switch (choice)

@@ -4,3 +4,4 @@
 4 greencolony 600 1
 5 lakhimpur 1000 2
 6 testarea 500 2
+209 haldwani 1000 1

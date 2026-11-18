@@ -5,3 +5,4 @@
 105 rescuekits 60
 111 medicine 50
 106 medicines 150
+406 clothes 0
